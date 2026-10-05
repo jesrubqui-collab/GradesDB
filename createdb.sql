@@ -60,7 +60,12 @@ CREATE TABLE subjects(
 	course TINYINT NOT NULL,
 	subject_type VARCHAR(30) NOT NULL,
 	PRIMARY KEY(subject_id),
-	FOREIGN KEY(degree_id) REFERENCES degrees(degree_id)
+	FOREIGN KEY(degree_id) REFERENCES degrees(degree_id),
+	CONSTRAINT rn10_subjects_credits CHECK(credits IN(6,12)),
+	CONSTRAINT rn16_subjects_course CHECK (course BETWEEN 1 AND 6),
+	CONSTRAINT ck_subjects_type CHECK (subject_type IN('Formación Básica','Obligatoria','Optativa')),
+	CONSTRAINT rn_uq_subjects_name UNIQUE(subject_name),
+	CONSTRAINT rn_uq_subjects_acronym UNIQUE (acronym)
 );
 
 CREATE TABLE groups(
