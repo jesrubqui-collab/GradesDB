@@ -47,7 +47,9 @@ CREATE TABLE degrees(
 	degree_id INT AUTO_INCREMENT,
 	degree_name VARCHAR(80) NOT NULL,
 	duration_years TINYINT NOT NULL,
-	PRIMARY KEY(degree_id)
+	PRIMARY KEY(degree_id),
+	CONSTRAINT rn13_degrees_duration CHECK (duration_years BETWEEN 3 AND 6),
+	CONSTRAINT rn_uq_degrees_name UNIQUE (degree_name)
 );
 CREATE TABLE subjects(
 	subject_id INT AUTO_INCREMENT,
