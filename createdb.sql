@@ -96,7 +96,10 @@ CREATE TABLE grades(
 	with_honors BOOLEAN NOT NULL DEFAULT 0,
 	PRIMARY KEY(grade_id),
 	FOREIGN KEY(student_id) REFERENCES students(student_id),
-	FOREIGN KEY (group_id)REFERENCES groups(group_id)
+	FOREIGN KEY (group_id)REFERENCES groups(group_id),
+	CONSTRAINT rn11_grades_value CHECK (grade_value BETWEEN 0 AND 10),
+	CONSTRAINT rn01_grades_with_honors CHECK(with_honors=0 OR grade_value>=9),
+	CONSTRAINT rn18_grades_exam_call CHECK(exam_call IN('Primera','Segunda','Tercera','Extraordinaria'))
 );
 CREATE TABLE subject_enrollments(
 	student_id INT,
