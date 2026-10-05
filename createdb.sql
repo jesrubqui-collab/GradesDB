@@ -20,8 +20,11 @@ CREATE TABLE people(
 	last_name VARCHAR(150) NOT NULL,
 	age TINYINT NOT NULL,
 	email VARCHAR(250) NOT NULL,
-	PRIMARY KEY (person_id)
-	
+	PRIMARY KEY (person_id),
+	CONSTRAINT rn12_people_age CHECK(age BETWEEN 16 AND 70),
+	CONSTRAINT rn14_people_dni CHECK (dni REGEXP"^[0-9]{8}[A-Za-z]$"),
+	CONSTRAINT rn_uq_people_dni UNIQUE (dni),
+	CONSTRAINT rn_uq_people_email UNIQUE(email)	
 );
 
 CREATE TABLE professors(

@@ -174,3 +174,4 @@ INSERT INTO teaching_loads (professor_id, group_id, credits) VALUES
 	(3, 2, 3.0),
 	(5, 3, 1.5),
 	(4, 3, 1.5);
+
