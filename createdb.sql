@@ -39,7 +39,9 @@ CREATE TABLE students(
 	student_id INT,
 	access_method VARCHAR(20) NOT NULL,
 	PRIMARY KEY (student_id),
-	FOREIGN KEY (student_id) REFERENCES people(person_id)
+	FOREIGN KEY (student_id) REFERENCES people(person_id),
+	CONSTRAINT ck_students_access_method CHECK(access_method IN('Selectividad','Ciclo','Mayor','Titulado','Extranjero'))
+
 );
 CREATE TABLE degrees(
 	degree_id INT AUTO_INCREMENT,
