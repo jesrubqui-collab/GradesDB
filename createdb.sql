@@ -75,7 +75,7 @@ CREATE TABLE groups(
 	activity VARCHAR(15) NOT NULL,
 	academic_year YEAR NOT NULL,
 	PRIMARY KEY (group_id),
-	FOREIGN KEY(subject_id)  REFERENCES subjects(subject_id),
+	FOREIGN KEY(subject_id)  REFERENCES subjects(subject_id) ON DELETE CASCADE,
 	CONSTRAINT r15_groups_year CHECK (academic_year BETWEEN 2000 AND 2100),
 	CONSTRAINT ck_groups_activity CHECK (activity IN('Teoría','Laboratorio')),
 	CONSTRAINT rn_uq_groups_name UNIQUE (subject_id,group_name,academic_year)
