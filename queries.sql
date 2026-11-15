@@ -1,4 +1,4 @@
--- 
+usuarios_db-- 
 -- Autor: Jesús 
 -- Fecha: Enero 2026
 -- Descripción: Consultas SQL de ejemplo para GradesDB

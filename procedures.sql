@@ -250,7 +250,7 @@ ORDER BY g.grade_value;
 -- mejores notas a partir de 9, como máximo al 5 % de los alumnos del grupo
 DELIMITER //
 CREATE OR REPLACE PROCEDURE p_assign_honors(
-	 IN p_group_id INT;
+	 IN p_group_id INT,
 	 IN p_exam_call VARCHAR(20)
 )
 BEGIN 
@@ -258,7 +258,7 @@ BEGIN
 	 DECLARE v_max_honors INT;
 	 
 	 SELECT COUNT(*) INTO v_total_students
-	 FROM students_groups
+	 FROM groups 
 	 WHERE group_id=p_group_id;
 	 
 	 -- FLOOR redondea hacia abajo: con menos de 20 alumnos no hay matrículas
@@ -286,7 +286,7 @@ BEGIN
 		 	 	 FROM grades
 		 	 	 WHERE group_id=p_group_id
 		 	 	 	 AND exam_call=p_exam_call
-		 	 	 	 professorsAND grade_value >=9.0
+		 	 	 	 AND grade_value >=9.0
 		 	 	 ORDER BY grade_value desc
 		 	 	 LIMIT v_max_honors
 		 	 	) AS selected_grades

@@ -1,4 +1,4 @@
---
+`degrees`--
 -- Autor: David Ruiz
 -- Fecha: Enero 2026
 -- Descripción: Datos adicionales para GradesDB para cubrir consultas de L3
